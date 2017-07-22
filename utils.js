@@ -74,3 +74,7 @@ function isArray(arg) {
 function isBoolean(arg) {
   return typeof arg === 'boolean';
 }
+
+function objectToString(o) {		
+  return Object.prototype.toString.call(o);		
+}
