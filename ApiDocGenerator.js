@@ -32,7 +32,12 @@ var APIDocGenerator = function () {
 				type: getType(request.headers[key])
 			});
 		}
-
+		for (var key in request.urlParameters) {
+			params.push({
+				name: key,
+				type: getType(request.urlParameters[key])
+			});
+		}
 		for (var key in request.jsonBody) {
 			params.push({
 				name: key,
