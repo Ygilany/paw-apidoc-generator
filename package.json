@@ -5,7 +5,10 @@
   "main": "ApiDocGenerator.js",
   "repository": {
     "type": "git",
-    "url": "git"
+    "url": "git+https://github.com/Ygilany/paw-apidoc-generator"
+  },
+  "bugs": {
+    "url": "https://github.com/Ygilany/test-server/issues"
   },
   "author": "Yahya Gilany <yahya.gilany@live.com>",
   "license": "MIT"

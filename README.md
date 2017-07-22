@@ -1,5 +1,6 @@
 # Paw Generator for ApiDoc
 Paw Code generator extension for [ApiDoc](http://apidocjs.com/)
+
  generates the inline documenation for the RESTful APIs.
 
 # Installation
