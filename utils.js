@@ -44,7 +44,7 @@ function isPrimitive(arg) {
 }
 
 function isNumber(arg) {
-  return typeof arg === 'number';
+  return typeof arg === 'number' || parseInt(arg);
 }
 
 function isString(arg) {
