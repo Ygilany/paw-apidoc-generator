@@ -1,0 +1,12 @@
+{
+  "name": "paw-apidoc-generator",
+  "version": "1.0.0",
+  "description": "Paw Code generator extension for apidoc",
+  "main": "ApiDocGenerator.js",
+  "repository": {
+    "type": "git",
+    "url": "git"
+  },
+  "author": "Yahya Gilany <yahya.gilany@live.com>",
+  "license": "MIT"
+}
