@@ -1,3 +1,6 @@
+// This is a combination of the Core-Utils library and some modifications on my part.
+// I had some trouble using the npm packege here.
+
 exports.getType = function (op) {
   if (isPrimitive(op)) {
     return isNull(op) ? 'null' :
