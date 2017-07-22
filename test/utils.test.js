@@ -31,4 +31,12 @@ describe('#getType', function () {
     var result = getType({"test":"test"});
     expect(result).to.equal('object');
   });
+
+  it('should return function when passed a function object', function () {
+    var aFunc = function() {
+      return;
+    }
+    var result = getType(aFunc);
+    expect(result).to.equal('function');
+  });
 });

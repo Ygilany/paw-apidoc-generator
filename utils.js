@@ -18,7 +18,7 @@ exports.getType = function (op) {
       isError(op) ? 'error' : 'object';
   }
 
-  if (this.isFunction(op)) return 'function';
+  if (isFunction(op)) return 'function';
 };
 
 function isRegExp(re) {
@@ -73,6 +73,10 @@ function isArray(arg) {
 
 function isBoolean(arg) {
   return typeof arg === 'boolean';
+}
+
+function isFunction(arg) {		
+  return typeof arg === 'function';		
 }
 
 function objectToString(o) {		
