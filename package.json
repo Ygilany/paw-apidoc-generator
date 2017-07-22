@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Paw Code generator extension for apidoc",
   "main": "ApiDocGenerator.js",
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Ygilany/paw-apidoc-generator"
@@ -11,5 +14,9 @@
     "url": "https://github.com/Ygilany/test-server/issues"
   },
   "author": "Yahya Gilany <yahya.gilany@live.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^4.1.0",
+    "mocha": "^3.4.2"
+  }
 }
