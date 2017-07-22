@@ -1,5 +1,7 @@
 var handlebars = require('./handlebars');
+var type = require('./utils/get-type');
 
+console.log(getType)
 var APIDocGenerator = function() {
 	this.generate = function(context, requests, options) {
 		var request = context.getCurrentRequest();
@@ -13,7 +15,7 @@ var APIDocGenerator = function() {
 			for (var key in responseBody.data) {
 				response.push({
 					name: key,
-					type: parseInt(request.headers[key])?`int`:`string`
+					type: type.get(responseBody.data[key])
 				});
 			}
 		}
@@ -21,14 +23,14 @@ var APIDocGenerator = function() {
 		for (var key in request.headers) {
 			headers.push({
 				name: key,
-				type: parseInt(request.headers[key])?`int`:`string`
+				type: type.get(request.headers[key])
 			});
 		}
 
 		for (var key in request.jsonBody) {
 			params.push({
 				name: key,
-				type: parseInt(request.jsonBody[key])?`int`:`string`
+				type: type.get(request.jsonBody[key])
 			});
 		}
 

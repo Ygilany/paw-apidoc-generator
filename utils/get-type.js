@@ -1,5 +1,5 @@
-var is = require('core-util-is');
-is.isJSON = require('is-json').strict;
+var is = require('./core-utils-is');
+is.isJSON = require('./is-json').strict;
 
 
 module.exports = new Type();
