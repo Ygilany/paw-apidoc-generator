@@ -5,15 +5,15 @@ var APIDocGenerator = function() {
 		var request = context.getCurrentRequest();
 
 		var headers = [];
-		var method = request.method;
-		var request_name
+
 		var jsonContent = false;
 		var body = addslashes(request.body);
 
 		for (var key in request.headers) {
 			headers.push({
 				name: key,
-				value: request.headers[key]
+				value: request.headers[key],
+				type: parseInt(request.headers[key])?`int`:`string`
 			});
 		}
 
@@ -27,7 +27,10 @@ var APIDocGenerator = function() {
 			body: body,
 			jsonContent: jsonContent,
 			method: request.method,
-			url: request.url
+			request_name: request.name,
+			request_description: request.description,
+			request_group: request.parent,
+			url: request.urlBase
 		};
 
 		var template = handlebars.compile(readFile('./ApiDocTemplate.hbs'));
