@@ -36,8 +36,8 @@ var APIDocGenerator = function() {
 	};
 };
 
-APIDocGenerator.identifier = 'com.ygilany.PawExtensions.JSDoc';
-APIDocGenerator.title = 'JSDoc Paw Generator';
+APIDocGenerator.identifier = 'com.ygilany.PawExtensions.apiDocGenerator';
+APIDocGenerator.title = 'ApiDoc Paw Generator';
 APIDocGenerator.languageHighlighter = 'coffeescript'; // The Javascript highlighter doesn't highlight :(
 APIDocGenerator.fileExtension = 'js';
 

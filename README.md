@@ -1,8 +1,8 @@
-# Paw Generator for Angular's $http provider
-Paw Code generator extension for Angular's $http provider.
+# Paw Generator for ApiDoc
+Paw Code generator extension for ApiDoc
 
 # Installation
-Clone this git repo into your extensions folder as `com.martianwabbit.PawExtensions.AngularGenerator`.
+Clone this git repo into your extensions folder as `com.ygilany.PawExtensions.apiDocGenerator`.
 
 # License
 The MIT License (MIT)
