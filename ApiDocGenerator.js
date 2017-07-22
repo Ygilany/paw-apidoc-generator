@@ -5,31 +5,41 @@ var APIDocGenerator = function() {
 		var request = context.getCurrentRequest();
 
 		var headers = [];
+		var params = [];
+		var response = [];
 
-		var jsonContent = false;
-		var body = addslashes(request.body);
+		var responseBody = JSON.parse(request.getLastExchange().responseBody);
+		if (responseBody.status === `SUCCESS` && responseBody.data) {
+			for (var key in responseBody.data) {
+				response.push({
+					name: key,
+					type: parseInt(request.headers[key])?`int`:`string`
+				});
+			}
+		}
 
 		for (var key in request.headers) {
 			headers.push({
 				name: key,
-				value: request.headers[key],
 				type: parseInt(request.headers[key])?`int`:`string`
 			});
 		}
 
-		if (typeof request.jsonBody === 'object') {
-			body = jsonBodyObject(request.jsonBody);
-			jsonContent = true;
+		for (var key in request.jsonBody) {
+			params.push({
+				name: key,
+				type: parseInt(request.jsonBody[key])?`int`:`string`
+			});
 		}
 
 		var view = {
 			headers: headers,
-			body: body,
-			jsonContent: jsonContent,
+			params: params,
+			response: response,
 			method: request.method,
 			request_name: request.name,
 			request_description: request.description,
-			request_group: request.parent,
+			request_group: request.parent ? request.parent.name : `...`,
 			url: request.urlBase
 		};
 
@@ -41,53 +51,7 @@ var APIDocGenerator = function() {
 
 APIDocGenerator.identifier = 'com.ygilany.PawExtensions.apiDocGenerator';
 APIDocGenerator.title = 'ApiDoc Paw Generator';
-APIDocGenerator.languageHighlighter = 'coffeescript'; // The Javascript highlighter doesn't highlight :(
+APIDocGenerator.languageHighlighter = 'javascript'; // The Javascript highlighter doesn't highlight :(
 APIDocGenerator.fileExtension = 'js';
 
 registerCodeGenerator(APIDocGenerator);
-
-// I stole these from the jQuery Generator :(
-var addslashes = function(str) {
-	return ('' + str).replace(/[\\"]/g, '\\$&').replace(/\n/g, '');
-};
-
-var jsonBodyObject = function(object, indent) {
-	var s;
-
-	indent = indent ? indent : 0;
-
-	if (object === null) {
-		s = 'null';
-	} else if (typeof object === 'string') {
-		s = `'${addslashes(object)}'`;
-	} else if (typeof object === 'number') {
-		s = `${object}`;
-	} else if (typeof object === 'boolean') {
-		s = `${object}`;
-	} else if (typeof object === 'object') {
-		var indentStr = Array(indent + 2).join('    ');
-		var indentStrChildren = Array(indent + 3).join('    ');
-
-		if (object.length != null) {
-			s = '[\n';
-
-			for (var i = 0, len = object.length; i < len; i++) {
-				s += `${indentStrChildren}${jsonBodyObject(object[i], indent + 1)}`;
-				s += ',\n';
-			}
-
-			s += `${indentStr}]`;
-		} else {
-			s = '{\n';
-
-			for (var key in object) {
-				var value = object[key];
-				s += `${indentStrChildren}'${addslashes(key)}': ${jsonBodyObject(value, indent + 1)},\n`;
-			}
-
-			s += `${indentStr}}`;
-		}
-	}
-
-	return s;
-};
