@@ -10,7 +10,9 @@
  * @apiHeader {{type}} {{name}} description for {{name}}
 	{{/each}}
  *
- * @apiParam {String} id The Users-ID.
+	{{#each params}}
+ * @apiParam {{type}} {{name}} description for {{name}}
+ 	{{/each}}
  *
  *
  * @apiSuccess {String}   id            The Users-ID.
