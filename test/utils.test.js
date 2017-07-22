@@ -22,6 +22,11 @@ describe('#getType', function () {
     expect(result).to.equal('boolean');
   });
 
+  it('should return null when passed a undefined value', function () {
+    var result = getType(undefined);
+    expect(result).to.equal('undefined');
+  });
+
   it('should return null when passed a null value', function () {
     var result = getType(null);
     expect(result).to.equal('null');
@@ -38,5 +43,10 @@ describe('#getType', function () {
     }
     var result = getType(aFunc);
     expect(result).to.equal('function');
+  });
+
+  it('should return array when passed an array object', function () {
+    var result = getType([1,2,3,4]);
+    expect(result).to.equal('array');
   });
 });
