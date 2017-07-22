@@ -1,4 +1,4 @@
-# Paw Generator for ApiDoc
+# Paw Generator for ApiDoc [![Build Status](https://travis-ci.org/Ygilany/paw-apidoc-generator.svg?branch=master)](https://travis-ci.org/Ygilany/paw-apidoc-generator)
 Paw Code generator extension for [ApiDoc](http://apidocjs.com/)
 
  generates the inline documenation for the RESTful APIs.
