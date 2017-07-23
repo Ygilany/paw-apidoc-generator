@@ -1,6 +1,9 @@
 engines:
   eslint:
     enabled: true
+    checks:
+      guard-for-in:
+        enabled: false
   duplication:
     enabled: true
     config:
