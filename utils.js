@@ -43,7 +43,7 @@ function isSymbol(arg) {
 }
 
 function isNumber(arg) {
-  return typeof arg === 'number' || parseInt(arg);
+  return typeof arg === 'number' || parseInt(arg, 10);
 }
 
 function isString(arg) {
