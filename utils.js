@@ -21,22 +21,6 @@ exports.getType = function (op) {
   if (isFunction(op)) return 'function';
 };
 
-function isRegExp(re) {
-  return objectToString(re) === '[object RegExp]';
-}
-
-function isDate(d) {
-  return objectToString(d) === '[object Date]';
-}
-
-function isObject(arg) {
-  return typeof arg === 'object' && arg !== null;
-}
-
-function isError(e) {
-  return (objectToString(e) === '[object Error]' || e instanceof Error);
-}
-
 function isPrimitive(arg) {
   return arg === null ||
          typeof arg === 'boolean' ||
@@ -46,6 +30,18 @@ function isPrimitive(arg) {
          typeof arg === 'undefined';
 }
 
+function isNull(arg) {
+  return arg === null;
+}
+
+function isBoolean(arg) {
+  return typeof arg === 'boolean';
+}
+
+function isSymbol(arg) {
+  return typeof arg === 'symbol';
+}
+
 function isNumber(arg) {
   return typeof arg === 'number' || parseInt(arg);
 }
@@ -53,15 +49,13 @@ function isNumber(arg) {
 function isString(arg) {
   return typeof arg === 'string';
 }
-function isSymbol(arg) {
-  return typeof arg === 'symbol';
-}
+
 function isUndefined(arg) {
   return arg === void 0;
 }
 
-function isNull(arg) {
-  return arg === null;
+function isObject(arg) {
+  return typeof arg === 'object' && arg !== null;
 }
 
 function isArray(arg) {
@@ -71,8 +65,16 @@ function isArray(arg) {
   return objectToString(arg) === '[object Array]';
 }
 
-function isBoolean(arg) {
-  return typeof arg === 'boolean';
+function isRegExp(re) {
+  return objectToString(re) === '[object RegExp]';
+}
+
+function isDate(d) {
+  return objectToString(d) === '[object Date]';
+}
+
+function isError(e) {
+  return (objectToString(e) === '[object Error]' || e instanceof Error);
 }
 
 function isFunction(arg) {		
