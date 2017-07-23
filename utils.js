@@ -5,8 +5,8 @@ exports.getType = function (op) {
   if (isPrimitive(op)) {
     return isNull(op) ? 'null' :
       isBoolean(op) ? 'boolean' :
-      isNumber(op) ? 'number' :
       isSymbol(op) ? 'symbol' :
+      isNumber(op) ? 'number' :
       isString(op) ? 'string' :
       isUndefined(op) ? 'undefined' : 'unknown';
   }

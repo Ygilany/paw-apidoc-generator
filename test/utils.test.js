@@ -49,4 +49,30 @@ describe('#getType', function () {
     var result = getType([1,2,3,4]);
     expect(result).to.equal('array');
   });
+
+  it('should return Error when passed an Error object', function () {
+    var result = getType(new Error());
+    expect(result).to.equal('error');
+  });
+
+  it('should return Date when passed an Date object', function () {
+    var result = getType(new Date());
+    expect(result).to.equal('date');
+  });
+
+  it('should return RegEx when passed an RegEx object1', function () {
+    var result = getType(/a+c/);
+    expect(result).to.equal('regexp');
+  });
+
+  it('should return RegEx when passed an RegEx object2', function () {
+    var result = getType(new RegExp('a+c'));
+    expect(result).to.equal('regexp');
+  });
+
+  it('should return symbol when passed an symbol object', function () {
+    var sym = Symbol();
+    var result = getType(sym);
+    expect(result).to.equal('symbol');
+  });
 });
