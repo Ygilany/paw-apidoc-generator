@@ -51,7 +51,7 @@ function isString(arg) {
 }
 
 function isUndefined(arg) {
-  return arg === void 0;
+  return arg === undefined;
 }
 
 function isObject(arg) {
