@@ -1,6 +1,7 @@
 # Paw Generator for ApiDoc 
 [![Build Status](https://travis-ci.org/Ygilany/paw-apidoc-generator.svg?branch=master)](https://travis-ci.org/Ygilany/paw-apidoc-generator)
 [![Coverage Status](https://coveralls.io/repos/github/Ygilany/paw-apidoc-generator/badge.svg?branch=master)](https://coveralls.io/github/Ygilany/paw-apidoc-generator?branch=master)
+[![GitHub issues](https://img.shields.io/github/issues/Ygilany/paw-apidoc-generator.svg)](https://github.com/Ygilany/paw-apidoc-generator/issues)
 
  generates the inline documenation for the RESTful APIs.
 
