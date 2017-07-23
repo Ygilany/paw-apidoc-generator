@@ -19,32 +19,13 @@ var APIDocGenerator = function () {
 
 		var responseBody = JSON.parse(request.getLastExchange().responseBody);
 		if (responseBody.status === `SUCCESS` && responseBody.data) {
-			for (var res_key in responseBody.data) {
-				response.push({
-					name: res_key,
-					type: utils.getType(responseBody.data[res_key])
-				});
-			}
+			extractKeyNamesAndTypes(responseBody.data, response);
 		}
 
-		for (var header_key in request.headers) {
-			headers.push({
-				name: header_key,
-				type: utils.getType(request.headers[header_key])
-			});
-		}
-		for (var url_param_key in request.urlParameters) {
-			params.push({
-				name: url_param_key,
-				type: utils.getType(request.urlParameters[url_param_key])
-			});
-		}
-		for (var body_key in request.jsonBody) {
-			params.push({
-				name: body_key,
-				type: utils.getType(request.jsonBody[body_key])
-			});
-		}
+		extractKeyNamesAndTypes(request.headers, headers);
+		extractKeyNamesAndTypes(request.urlParameters, params);
+		extractKeyNamesAndTypes(request.jsonBody, params);
+
 
 		var view = {
 			headers: headers,
@@ -61,6 +42,15 @@ var APIDocGenerator = function () {
 
 		return template(view);
 	};
+};
+
+var extractKeyNamesAndTypes = function (theObj, resultsVariable) {
+	for (var key in theObj) {
+		resultsVariable.push({
+			name: key,
+			type: utils.getType(theObj[key])
+		});
+	}
 };
 
 APIDocGenerator.identifier = 'com.ygilany.PawExtensions.apiDocGenerator';
