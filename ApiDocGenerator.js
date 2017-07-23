@@ -19,30 +19,30 @@ var APIDocGenerator = function () {
 
 		var responseBody = JSON.parse(request.getLastExchange().responseBody);
 		if (responseBody.status === `SUCCESS` && responseBody.data) {
-			for (var key in responseBody.data) {
+			for (var res_key in responseBody.data) {
 				response.push({
-					name: key,
-					type: utils.getType(responseBody.data[key])
+					name: res_key,
+					type: utils.getType(responseBody.data[res_key])
 				});
 			}
 		}
 
-		for (var key in request.headers) {
+		for (var header_key in request.headers) {
 			headers.push({
-				name: key,
-				type: utils.getType(request.headers[key])
+				name: header_key,
+				type: utils.getType(request.headers[header_key])
 			});
 		}
-		for (var key in request.urlParameters) {
+		for (var url_param_key in request.urlParameters) {
 			params.push({
-				name: key,
-				type: utils.getType(request.urlParameters[key])
+				name: url_param_key,
+				type: utils.getType(request.urlParameters[url_param_key])
 			});
 		}
-		for (var key in request.jsonBody) {
+		for (var body_key in request.jsonBody) {
 			params.push({
-				name: key,
-				type: utils.getType(request.jsonBody[key])
+				name: body_key,
+				type: utils.getType(request.jsonBody[body_key])
 			});
 		}
 
