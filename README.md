@@ -11,7 +11,7 @@
 Clone this git repo into your extensions folder as `com.ygilany.PawExtensions.apiDocGenerator`.
 
 # Change Log
-### v 1.1.0 (in development - dev branch)
+### v 1.1.0 (in development)
 - parsing the API Version, permissions and name from the description if the description was parsable, otherwise, keep as is.
 
 ### v 1.0.0
