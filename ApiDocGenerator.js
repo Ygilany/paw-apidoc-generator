@@ -4,13 +4,6 @@ var utils = require('./utils');
 var APIDocGenerator = function () {
 	this.generate = function (context, requests, options) {
 
-		var getType = function (obj) {
-			if (obj === undefined) return 'Undefined';
-			if (obj === null) return 'Null';
-
-			var typeString = Object.prototype.toString.call(obj);
-			return typeString.slice(typeString.indexOf(' ') + 1, -1);
-		};
 		var request = context.getCurrentRequest();
 
 		var headers = [];
