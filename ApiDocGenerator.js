@@ -37,13 +37,25 @@ var APIDocGenerator = function () {
 	};
 };
 
-var extractKeyNamesAndTypes = function (theObj, resultsVariable) {
-	for (var key in theObj) {
-		resultsVariable.push({
-			name: key,
-			type: utils.getType(theObj[key])
-		});
+function processor (key, type, result) {
+	result.push({
+		name: key,
+		type
+	});
+}
+
+var traverse = function(o, parent_key = null, result) {
+	for (var key in o) {
+		const parent = parent_key ? parent_key + "." : "";
+		processor(`${parent}${key}`, `${utils.getType(o[key])}`, result)
+		if (o[key] !== null && typeof(o[key])=="object") {
+			traverse(o[key], `${parent}${key}`, result);
+		}
 	}
+}
+
+var extractKeyNamesAndTypes = function (theObj, resultsVariable) {
+	traverse(theObj, null, resultsVariable)
 };
 
 APIDocGenerator.identifier = 'com.ygilany.PawExtensions.apiDocGenerator';
