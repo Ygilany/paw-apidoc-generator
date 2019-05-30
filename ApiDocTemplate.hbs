@@ -1,22 +1,22 @@
 /**
- * @api {{method}} {{url}} {{request_name}}
+ * @api {{#surroundWithCurlyBraces method}}{{/surroundWithCurlyBraces}} {{url}} {{request_name}}
  * @apiVersion <...>
- * @apiName <...>
+ * @apiName {{api_name}}
  * @apiGroup {{request_group}}
  * @apiPermission <...>
  *
  * @apiDescription {{request_description}}
  *
  	{{#each headers}}
- * @apiHeader	{{type}}	{{name}}	<description for {{name}}>
+ * @apiHeader	{{#surroundWithCurlyBraces type}}{{/surroundWithCurlyBraces}}		{{name}}	description_for_{{name}}
 	{{/each}}
  *
 	{{#each params}}
- * @apiParam	{{type}}	{{name}}	<description for {{name}}>
+ * @apiParam		{{#surroundWithCurlyBraces type}}{{/surroundWithCurlyBraces}}		{{name}}	description_for_{{name}}
  	{{/each}}
  *
 	{{#each response}}
- * @apiSuccess	{{type}}	{{name}}	<description for {{name}}>
+ * @apiSuccess	{{#surroundWithCurlyBraces type}}{{/surroundWithCurlyBraces}}		{{name}}	description_for_{{name}}
  	{{/each}}
  *
  */

@@ -1,17 +1,18 @@
-var handlebars = require('./handlebars');
-var utils = require('./utils');
+const handlebars = require('./external_libs/handlebars');
+const utils = require('./utils');
 
-var APIDocGenerator = function () {
+const APIDocGenerator = function () {
 	this.generate = function (context, requests, options) {
 
-		var request = context.getCurrentRequest();
+		const request = context.getCurrentRequest();
 
-		var headers = [];
-		var params = [];
-		var response = [];
+		const headers = [];
+		const params = [];
+		const response = [];
 
-		var responseBody = JSON.parse(request.getLastExchange().responseBody);
-		if (responseBody.status === `SUCCESS` && responseBody.data) {
+		console.log(request.getLastExchange().responseStatusCode)
+		const responseBody = JSON.parse(request.getLastExchange().responseBody);
+		if (request.getLastExchange().responseStatusCode && responseBody.data) {
 			extractKeyNamesAndTypes(responseBody.data, response);
 		}
 
@@ -20,18 +21,23 @@ var APIDocGenerator = function () {
 		extractKeyNamesAndTypes(request.jsonBody, params);
 
 
-		var view = {
+		const view = {
 			headers: headers,
 			params: params,
 			response: response,
 			method: request.method,
 			request_name: request.name,
+			api_name: utils.toCamelCase(request.name),
 			request_description: request.description,
 			request_group: request.parent ? request.parent.name : `...`,
 			url: request.urlBase
 		};
 
-		var template = handlebars.compile(readFile('./ApiDocTemplate.hbs'));
+		handlebars.registerHelper('surroundWithCurlyBraces', function(text) {
+			var result = '{' + text + '}';
+			return new handlebars.SafeString(result);
+		});
+		const template = handlebars.compile(readFile('./ApiDocTemplate.hbs'));
 
 		return template(view);
 	};
@@ -44,8 +50,8 @@ function processor (key, type, result) {
 	});
 }
 
-var traverse = function(o, parent_key = null, result) {
-	for (var key in o) {
+const traverse = function(o, parent_key = null, result) {
+	for (const key in o) {
 		const parent = parent_key ? parent_key + "." : "";
 		processor(`${parent}${key}`, `${utils.getType(o[key])}`, result)
 		if (o[key] !== null && typeof(o[key])=="object") {
@@ -54,8 +60,8 @@ var traverse = function(o, parent_key = null, result) {
 	}
 }
 
-var extractKeyNamesAndTypes = function (theObj, resultsVariable) {
-	traverse(theObj, null, resultsVariable)
+const extractKeyNamesAndTypes = function (theObj, resultsconstiable) {
+	traverse(theObj, null, resultsconstiable)
 };
 
 APIDocGenerator.identifier = 'com.ygilany.PawExtensions.apiDocGenerator';
