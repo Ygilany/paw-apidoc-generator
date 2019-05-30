@@ -1,0 +1,57 @@
+{
+  "_from": "get-data-type",
+  "_id": "get-data-type@1.0.2",
+  "_inBundle": false,
+  "_integrity": "sha512-CAd18K99HffgMxyhl6LF12lFpu0z4AePVCxz42yFw42AzOPtuX5qNGCBE/IJ9awa3ztezNDYt0IPM/lUHZJTuA==",
+  "_location": "/get-data-type",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "get-data-type",
+    "name": "get-data-type",
+    "escapedName": "get-data-type",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/get-data-type/-/get-data-type-1.0.2.tgz",
+  "_shasum": "c1c4a721257ee386dd0f72fe196b33e7fb750839",
+  "_spec": "get-data-type",
+  "_where": "/Users/andrewlively/git/yahya/paw-apidoc-generator",
+  "author": {
+    "name": "xuyunfei",
+    "email": "347394153@qq.com"
+  },
+  "bugs": {
+    "url": "https://github.com/succeed2011/get-data-type/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {},
+  "deprecated": false,
+  "description": "Get data's type",
+  "devDependencies": {},
+  "homepage": "https://github.com/succeed2011/get-data-type#readme",
+  "keywords": [
+    "Dcheck",
+    "type",
+    "data",
+    "get",
+    "is"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "get-data-type",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/succeed2011/get-data-type.git"
+  },
+  "scripts": {
+    "test": "node test.js"
+  },
+  "version": "1.0.2"
+}
