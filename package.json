@@ -1,6 +1,6 @@
 {
   "name": "paw-apidoc-generator",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Paw Code generator extension for apidoc",
   "main": "ApiDocGenerator.js",
   "scripts": {
@@ -21,5 +21,9 @@
     "coveralls": "^3.0.3",
     "istanbul": "^0.4.5",
     "mocha": "^6.1.4"
+  },
+  "dependencies": {
+    "get-data-type": "^1.0.2",
+    "handlebars": "^4.1.2"
   }
 }
