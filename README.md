@@ -12,6 +12,7 @@ Clone this git repo into your extensions folder as `com.ygilany.PawExtensions.ap
 
 # Change Log
 ### v 1.2.0
+#### I appologize to all users of this extenstions for not mainitaint it. I didn't realize anyone was using it until very soon. Also all PRs are welcome
 - uses get-data-type npm module instead of parsing the datatype myself.
 - update the handlebars template to include the curly brackets surrounding the data types and the method
 - generate the docs for the response only when the response status code is 200. (instead of previously depending on a property called status having the value `SUCCESS`)
